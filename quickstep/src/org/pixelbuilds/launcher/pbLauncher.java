@@ -17,7 +17,13 @@
 package org.pixelbuilds.launcher;
 
 import com.android.launcher3.uioverrides.QuickstepLauncher;
+import com.android.systemui.plugins.shared.LauncherOverlayManager;
 
 public class pbLauncher extends QuickstepLauncher {
+
+    @Override
+    protected LauncherOverlayManager getDefaultOverlay() {
+        return new OverlayCallbackImpl(this);
+    }
 
 }
