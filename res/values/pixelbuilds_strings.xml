@@ -44,4 +44,11 @@
 
     <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
     <string name="msg_minus_one_on_right">From Home screen, swipe right to open Google feed</string>
+    
+    <!-- Settings Categories -->
+    <string name="category_icon">Icons</string>
+    <string name="category_misc">Misc</string>
+
+    <!-- Recents -->
+    <string name="action_lens">Lens</string>
 </resources>
