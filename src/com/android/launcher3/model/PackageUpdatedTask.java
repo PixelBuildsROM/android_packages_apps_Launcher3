@@ -36,6 +36,7 @@ import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.LauncherSettings.Favorites;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.icons.IconCache;
 import com.android.launcher3.logging.FileLog;
@@ -111,7 +112,7 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
                 : ItemInfoMatcher.ofPackages(packageSet, mUser);
         final HashSet<ComponentName> removedComponents = new HashSet<>();
         final HashMap<String, List<LauncherActivityInfo>> activitiesLists = new HashMap<>();
-
+        boolean needsRestart = false;
         switch (mOp) {
             case OP_ADD: {
                 for (int i = 0; i < N; i++) {
@@ -122,6 +123,9 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
                     }
                     activitiesLists.put(
                             packages[i], appsList.addPackage(context, packages[i], mUser));
+                    if (isTargetPackage(packages[i])) {
+                        needsRestart = true;
+                    }
                 }
                 flagOp = FlagOp.NO_OP.removeFlag(WorkspaceItemInfo.FLAG_DISABLED_NOT_AVAILABLE);
                 break;
@@ -142,6 +146,9 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
                             launcher.refreshAndBindWidgetsForPackageUser(
                                     new PackageUserKey(packages[i], mUser));
                         }
+                        if (isTargetPackage(packages[i])) {
+                            needsRestart = true;
+                        }
                     }
                 }
                 // Since package was just updated, the target must be available now.
@@ -151,6 +158,9 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
                 for (int i = 0; i < N; i++) {
                     FileLog.d(TAG, "Removing app icon" + packages[i]);
                     iconCache.removeIconsForPkg(packages[i], mUser);
+                    if (isTargetPackage(packages[i])) {
+                        needsRestart = true;
+                    }
                 }
                 // Fall through
             }
@@ -167,6 +177,11 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
                         WorkspaceItemInfo.FLAG_DISABLED_SUSPENDED, mOp == OP_SUSPEND);
                 if (DEBUG) Log.d(TAG, "mAllAppsList.(un)suspend " + N);
                 appsList.updateDisabledFlags(matcher, flagOp);
+                for (int i = 0; i < N; i++) {
+                    if (isTargetPackage(packages[i])) {
+                        needsRestart = true;
+                    }
+                }
                 break;
             case OP_USER_AVAILABILITY_CHANGE: {
                 UserManagerState ums = new UserManagerState();
@@ -362,6 +377,10 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
             }
             bindUpdatedWidgets(dataModel);
         }
+
+        if (needsRestart) {
+            Utilities.restart();
+        }
     }
 
     /**
@@ -383,5 +402,9 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
             return true;
         }
         return false;
+    }
+
+    private boolean isTargetPackage(String packageName) {
+        return packageName.equals(Utilities.GSA_PACKAGE);
     }
 }
