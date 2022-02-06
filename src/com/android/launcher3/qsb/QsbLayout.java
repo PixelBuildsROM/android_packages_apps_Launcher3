@@ -5,6 +5,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import com.android.launcher3.BaseActivity;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.R;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.qsb.QsbContainerView;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ActivityContext;
@@ -48,9 +52,10 @@ public class QsbLayout extends FrameLayout implements
 
         String searchPackage = QsbContainerView.getSearchWidgetPackageName(mContext);
         setOnClickListener(view -> {
-            mContext.startActivity(new Intent("android.search.action.GLOBAL_SEARCH").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK).setPackage(searchPackage));
+            mContext.startActivity(new Intent("android.search.action.GLOBAL_SEARCH").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).setPackage(searchPackage));
         });
-        if (searchPackage == "com.google.android.googlequicksearchbox") {
+        if (Utilities.isGSAEnabled(mContext)) {
             enableLensIcon();
         }
     }
@@ -72,7 +77,6 @@ public class QsbLayout extends FrameLayout implements
                 measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
             }
         }
-
     }
 
     @Override
@@ -95,12 +99,17 @@ public class QsbLayout extends FrameLayout implements
     }
 
     private void enableLensIcon() {
-        Intent lensIntent = Intent.makeMainActivity(new ComponentName("com.google.ar.lens", "com.google.vr.apps.ornament.app.lens.LensLauncherActivity")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        if (getContext().getPackageManager().resolveActivity(lensIntent, 0) == null){
-            return;
-        }
         mLensIcon.setVisibility(View.VISIBLE);
         mLensIcon.setOnClickListener(view -> {
+            Intent lensIntent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putString("caller_package", Utilities.GSA_PACKAGE);
+            bundle.putLong("start_activity_time_nanos", SystemClock.elapsedRealtimeNanos());
+            lensIntent.setComponent(new ComponentName(Utilities.GSA_PACKAGE, Utilities.LENS_ACTIVITY))
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .setPackage(Utilities.GSA_PACKAGE)
+                    .setData(Uri.parse(Utilities.LENS_URI))
+                    .putExtra("lens_activity_params", bundle);
             mContext.startActivity(lensIntent);
         });
     }
