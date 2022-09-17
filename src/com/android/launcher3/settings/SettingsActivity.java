@@ -61,6 +61,8 @@ import com.android.launcher3.uioverrides.flags.DeveloperOptionsFragment;
 import com.android.launcher3.uioverrides.plugins.PluginManagerWrapper;
 import com.android.launcher3.util.DisplayController;
 
+import com.android.internal.util.pb.OmniJawsClient;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -151,6 +153,11 @@ public class SettingsActivity extends FragmentActivity
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) { 
         switch (key) {
             case Utilities.KEY_DOCK_SEARCH:
+            case Utilities.DESKTOP_SHOW_QUICKSPACE:
+            case Utilities.KEY_SHOW_ALT_QUICKSPACE:
+            case Utilities.KEY_SHOW_QUICKSPACE_NOWPLAYING:
+            case Utilities.KEY_SHOW_QUICKSPACE_WEATHER:
+            case Utilities.KEY_SHOW_QUICKSPACE_PSONALITY:
                 LauncherAppState.getInstanceNoCreate().setNeedsRestart();
                 break;
             default:
@@ -212,6 +219,9 @@ public class SettingsActivity extends FragmentActivity
 
         private Preference mShowGoogleAppPref;
         private Preference mShowGoogleBarPref;
+        private Preference mWeatherPref;
+
+        private OmniJawsClient mWeatherClient;
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -238,6 +248,13 @@ public class SettingsActivity extends FragmentActivity
                 } else {
                     screen.removePreference(preference);
                 }
+            }
+
+            mWeatherClient = new OmniJawsClient(getContext());
+            mWeatherPref = screen.findPreference(Utilities.KEY_SHOW_QUICKSPACE_WEATHER);
+            if (!mWeatherClient.isOmniJawsEnabled()) {
+                mWeatherPref.setEnabled(false);
+                mWeatherPref.setSummary(R.string.quick_event_ambient_weather_enabled_info);
             }
 
             if (getActivity() != null && !TextUtils.isEmpty(getPreferenceScreen().getTitle())) {

@@ -18,4 +18,8 @@
 
     <color name="disabled_text_color">#66000000</color> <!-- 38% black -->
 
+    <!-- QuickSpace -->
+    <dimen name="quickspace_title_size">24dp</dimen>
+    <dimen name="quickspace_alternate_title_size">22dp</dimen>
+    
 </resources>
