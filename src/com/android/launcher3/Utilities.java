@@ -136,7 +136,9 @@ public final class Utilities {
     @ChecksSdkIntAtLeast(api = VERSION_CODES.UPSIDE_DOWN_CAKE, codename = "U")
     public static final boolean ATLEAST_U = Build.VERSION.SDK_INT >= VERSION_CODES.UPSIDE_DOWN_CAKE;
 
-    private static final long WAIT_BEFORE_RESTART = 100; // ms
+    private static final long WAIT_BEFORE_RESTART = 300; // ms
+    private static final Object sRestartLock = new Object();
+    private static boolean sRestartScheduled = false;
 
     /**
      * Set on a motion event dispatched from the nav bar. See {@link MotionEvent#setEdgeFlags(int)}.
@@ -868,6 +870,13 @@ public final class Utilities {
     }
     
     public static void restart() {
+        synchronized (sRestartLock) {
+            if (sRestartScheduled) {
+                return;
+            }
+            sRestartScheduled = true;
+        }
+        
         MAIN_EXECUTOR.getHandler().postDelayed(() -> {
             System.exit(0);
         }, WAIT_BEFORE_RESTART);
