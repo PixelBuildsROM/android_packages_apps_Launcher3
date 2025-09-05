@@ -167,7 +167,6 @@ public final class Utilities {
     public static final String DESKTOP_SHOW_QUICKSPACE = "pref_show_quickspace";
     public static final String KEY_SHOW_ALT_QUICKSPACE = "pref_show_alt_quickspace";
     public static final String KEY_SHOW_QUICKSPACE_PSONALITY = "pref_quickspace_psonality";
-    public static final String KEY_SHOW_QUICKSPACE_NOWPLAYING = "pref_quickspace_np";
     public static final String KEY_SHOW_QUICKSPACE_WEATHER = "pref_quickspace_weather";
     public static final String KEY_QUICKSPACE_SHOW_CITY = "pref_quickspace_city";
 
@@ -896,11 +895,6 @@ public final class Utilities {
     public static boolean isQuickspacePersonalityEnabled(Context context) {
         SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_SHOW_QUICKSPACE_PSONALITY, true);
-    }
-
-    public static boolean isQuickspaceNowPlaying(Context context) {
-        SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
-        return prefs.getBoolean(KEY_SHOW_QUICKSPACE_NOWPLAYING, true);
     }
 
     public static boolean isQuickspaceWeather(Context context) {

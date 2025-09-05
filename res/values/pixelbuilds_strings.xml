@@ -84,10 +84,6 @@
     <string name="qe_now_playing_ext_one">Now playing</string>
     <string name="qe_now_playing_by">By</string>
 
-    <!-- Quickspace Now Playing -->
-    <string name="quickspace_now_playing_title">Now playing</string>
-    <string name="quickspace_now_playing_summary">Show the song you\'re playing</string>
-
     <!-- Quickspace alternative view -->
     <string name="quickspace_alternate_style_title">Extended style</string>
     <string name="quickspace_alternate_style_summary">Switch to extended style</string>

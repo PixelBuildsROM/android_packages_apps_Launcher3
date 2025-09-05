@@ -174,8 +174,6 @@ public class QuickEventsController {
 
         if (!mIsFirstTimeDone) return;
 
-        if (!Utilities.isQuickspaceNowPlaying(mContext)) return;
-
         if (!mPlayingActive) return;
 
         if (mNowPlayingTitle == null) return;
