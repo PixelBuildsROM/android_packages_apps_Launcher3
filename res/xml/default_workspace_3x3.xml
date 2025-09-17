@@ -33,7 +33,6 @@
         <favorite launcher:uri="#Intent;action=android.intent.action.CAMERA_BUTTON;end" />
     </resolve>
 
-    <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
     <!-- Messaging, [All Apps], Dialer -->
 
     <resolve
