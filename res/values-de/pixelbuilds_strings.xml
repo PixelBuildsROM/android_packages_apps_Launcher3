@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2022 Paranoid Android
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<resources>
+    <string name="category_icon">Icons</string>
+    <string name="category_misc">Sonstiges</string>
+    <string name="action_lens">Lens</string>
+    <string name="show_quickspace_title">Auf einen Blick</string>
+    <string name="show_quickspace_summary">Oben auf dem Startbildschirm anzeigen</string>
+    <string name="quick_event_rom_intro_welcome">Willkommen bei PixelBuilds!</string>
+    <string name="quick_event_rom_intro_welcome_ext">Willkommen bei PixelBuilds!</string>
+    <string-array name="welcome_message_variants">
+        <item>Unendlichkeit wartet!</item>
+        <item>Ihr Gerät steht Ihnen zur Verfügung!</item>
+        <item>Besuch uns doch mal auf Telegram</item>
+        <item>Hier tippen, um abzubrechen</item>
+    </string-array>
+    <string name="quickspace_grt_morning">Guten Morgen.</string>
+    <string name="quickspace_grt_evening">Guten Abend.</string>
+    <string name="quickspace_grt_afternoon">Guten Nachmittag.</string>
+    <string name="quickspace_grt_night">Gute Nacht.</string>
+    <string name="quickspace_grt_general">Guten Tag.</string>
+    <string name="quickspace_ext_one">Heute ist</string>
+    <string name="quickspace_ext_two">Es ist</string>
+    <string name="qe_now_playing_unknown_artist">Unbekannter Künstler</string>
+    <string name="qe_now_playing_ext_one">Läuft gerade</string>
+    <string name="qe_now_playing_by">von</string>
+    <string name="quickspace_alternate_style_title">Erweiterter Stil</string>
+    <string name="quickspace_alternate_style_summary">Zu erweitertem Stil wechseln</string>
+    <string name="quickspace_psa_title">Zufallsbotschaften</string>
+    <string name="quickspace_psa_summary">Mach mit Zufallsbotschaften dein Handy lebendiger</string>
+    <string-array name="quickspace_psa_morning">
+        <item>Guten Morgen!</item>
+        <item>Guten Morgen, Zeit zu Rocken!</item>
+        <item>Guten Morgen, hast du geschlafen?</item>
+        <item>Was für ein schöner Tag!</item>
+        <item>Wir wünschen Ihnen einen schönen Tag!</item>
+        <item>So kann man auch aufwachen.</item>
+        <item>Du solltest deinen Weckton ändern.</item>
+        <item>Sieht aus, als wäre es ein schöner Tag, oder?</item>
+        <item>Holen wir uns das Brot.</item>
+        <item>Schau lieber nach dem Wetter, man weiß ja nie</item>
+        <item>Noch etwas schläfrig?</item>
+        <item>Hast du schon mal rausgeschaut?</item>
+        <item>Lass uns das erledigen.</item>
+        <item>Morgen! Vergessen Sie nicht etwas Übung.</item>
+    </string-array>
+    <string-array name="quickspace_psa_noon">
+        <item>Denk dran, genügend Wasser zu trinken!</item>
+        <item>Nachmittags ist UV-Strahlung besonders schädlich.</item>
+        <item>Es ist jetzt Nachmittag.</item>
+        <item>Immer den Akkustand checken!</item>
+        <item>Denken Sie daran, Ihre Nachrichten zu überprüfen.</item>
+        <item>Bleib produktiv!</item>
+        <item>Lassen Sie sich nicht von Ihrem Telefon ablenken.</item>
+        <item>Vergessen Sie nicht, etwas Essen zu bekommen.</item>
+        <item>Genieße den Rest deines Tages</item>
+        <item>Halt durch! Der Tag ist fast rum!</item>
+        <item>Viel Spaß!</item>
+        <item>Go touch some grass.</item>
+        <item>Consider taking a short nap if you can.</item>
+    </string-array>
+</resources>

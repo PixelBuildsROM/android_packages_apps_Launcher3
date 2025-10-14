@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2022 Paranoid Android
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<resources>
+    <string name="pause">Pausa</string>
+    <string name="pause_apps_dialog_title">¿Pausar %1$s?</string>
+    <string name="pause_apps_dialog_message">Notificaciones para %1$s se pausarán</string>
+    <string name="paused_apps_dialog_title">Aplicación pausada</string>
+    <string name="paused_apps_dialog_message">%1$s fue pausado directamente desde el launcher</string>
+    <string name="paused_apps_drop_target_label">Pausar app</string>
+    <string name="label_search">Buscar</string>
+    <string name="label_lens">Lente de Google</string>
+    <string name="label_voice_search">Búsqueda por voz</string>
+    <string name="dock_search_title">Barra de búsqueda de Google</string>
+    <string name="dock_search_summary">Barra de búsqueda en el muelle inferior</string>
+    <string name="title_show_google_feed">Deslice para acceder al feed de Google</string>
+    <string name="msg_minus_one_on_left">Desde la pantalla de inicio, desliza a la izquierda para abrir el feed de Google</string>
+    <string name="msg_minus_one_on_right">Desde la pantalla de inicio, desliza a la derecha para abrir el feed de Google</string>
+    <string name="category_icon">Iconos</string>
+    <string name="category_misc">Miscelánea</string>
+    <string name="action_lens">Lente</string>
+    <string name="show_quickspace_title">A simple vista</string>
+    <string name="show_quickspace_summary">Mostrar en la parte superior de tu pantalla de inicio</string>
+    <string name="quick_event_rom_intro_welcome">¡Bienvenido a PixelBuilds!</string>
+    <string name="quick_event_rom_intro_welcome_ext">¡Bienvenido a PixelBuilds!</string>
+    <string-array name="welcome_message_variants">
+        <item>¡Falta infinitamente!</item>
+        <item>¡Tu dispositivo está a tu servicio!</item>
+        <item>Díganos a nosotros en Telegram</item>
+        <item>Pulsa aquí para descartar</item>
+    </string-array>
+    <string name="quickspace_grt_morning">Buenos días.</string>
+    <string name="quickspace_grt_evening">Buenas tardes.</string>
+    <string name="quickspace_grt_afternoon">Buenas tardes.</string>
+    <string name="quickspace_grt_night">Buenas noche.</string>
+    <string name="quickspace_grt_general">Buenos días.</string>
+    <string name="quickspace_ext_one">Hoy es</string>
+    <string name="quickspace_ext_two">Es</string>
+    <string name="qe_now_playing_unknown_artist">Artista Desconocido</string>
+    <string name="qe_now_playing_ext_one">Reproduciendo</string>
+    <string name="qe_now_playing_by">Por</string>
+    <string name="quickspace_alternate_style_title">Estilo extendido</string>
+    <string name="quickspace_alternate_style_summary">Cambiar al estilo extendido</string>
+    <string name="quickspace_psa_title">Mensajes aleatorios</string>
+    <string name="quickspace_psa_summary">Haz que tu compañero sea más animado con mensajes aleatorios</string>
+    <string-array name="quickspace_psa_morning">
+        <item>¡Buenos días!</item>
+        <item>¡Buenos días, hora de rocar!</item>
+        <item>Buenos días, ¿te has dormido?</item>
+        <item>¡Qué día tan hermoso!</item>
+        <item>¡Que tengas un buen día!</item>
+        <item>Es una forma de despertar.</item>
+        <item>Deberías cambiar los sonidos de tu alarma.</item>
+        <item>Parece que es un día hermoso, ¿no es así?</item>
+        <item>Vamos a conseguir este pan.</item>
+        <item>Comprobar el clima en caso de</item>
+        <item>¿Te sientes un poco dormido todavía?</item>
+        <item>¿Has mirado afuera todavía?</item>
+        <item>Hagámoslo.</item>
+        <item>¡Mañana! No olvides un poco de ejercicio.</item>
+    </string-array>
+    <string-array name="quickspace_psa_noon">
+        <item>¡No te olvides de hidratar!</item>
+        <item>Los rayos UV son más dañinos por la tarde.</item>
+        <item>Es la tarde en este momento.</item>
+        <item>¡Comprueba siempre los niveles de batería del dispositivo!</item>
+        <item>Recuerda revisar tus mensajes.</item>
+        <item>¡Mantente productivo!</item>
+        <item>No dejes que tu teléfono te distraiga.</item>
+        <item>No te olvides de obtener algo de comida.</item>
+        <item>Enjoy the rest of your day.</item>
+        <item>Hang on! The day is almost done!</item>
+        <item>Have some fun.</item>
+        <item>Go touch some grass.</item>
+        <item>Consider taking a short nap if you can.</item>
+    </string-array>
+    <string name="quick_event_weather_city_title">Ubicación actual</string>
+    <string name="quick_event_weather_city_summary">Mostrar ubicación actual</string>
+    <string name="intent_no_app_clock_found">No se puede encontrar el calendario o la actividad del reloj</string>
+</resources>

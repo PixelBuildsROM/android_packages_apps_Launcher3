@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2022 Paranoid Android
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<resources>
+    <string name="pause">Паўза</string>
+    <string name="pause_apps_dialog_title">Прыпыніць %1$s?</string>
+    <string name="pause_apps_dialog_message">Апавяшчэнні для %1$s будуць прыпынены</string>
+    <string name="paused_apps_dialog_title">Праграма прыпынена</string>
+    <string name="paused_apps_dialog_message">%1$s быў прыпынены непасрэдна з праграмы запуску</string>
+    <string name="paused_apps_drop_target_label">Прыпыніць праграму</string>
+    <string name="label_search">Пошук</string>
+    <string name="label_lens">Google Аб\'ектыў</string>
+    <string name="label_voice_search">Галасавы пошук</string>
+    <string name="dock_search_title">Панэль пошуку Google</string>
+    <string name="dock_search_summary">Радок пошуку ў ніжняй панэлі</string>
+    <string name="category_icon">Значкі</string>
+    <string name="category_misc">Рознае</string>
+    <string name="action_lens">Лінза</string>
+    <string name="show_quickspace_title">Самае галоўнае</string>
+    <string name="show_quickspace_summary">Паказваць у верхняй частцы экрана</string>
+    <string-array name="welcome_message_variants">
+        <item>Infinity awaits!</item>
+        <item>Your device is at your service!</item>
+        <item>Пагаварыце з намі ў Telegram</item>
+        <item>Tap here to dismiss</item>
+    </string-array>
+    <string name="quickspace_grt_morning">Добрай раніцы.</string>
+    <string name="quickspace_grt_evening">Добры вечар.</string>
+    <string name="quickspace_grt_afternoon">Добры дзень.</string>
+    <string name="quickspace_psa_title">Выпадковыя паведамленні</string>
+    <string name="quickspace_psa_summary">Зрабіце свайго спадарожніка больш жывым з дапамогай выпадковых паведамленняў</string>
+    <string-array name="quickspace_psa_morning">
+        <item>Добрай раніцы!</item>
+        <item>Добрай раніцы, час запальваць!</item>
+        <item>Good morning, did you get any sleep?</item>
+        <item>Які цудоўны дзень!</item>
+        <item>Have a nice day!</item>
+        <item>That\'s one way to wake up.</item>
+        <item>You should change your alarm sounds.</item>
+        <item>Looks like it\'s a beautiful day, isn\'t it?</item>
+        <item>Let\'s get this bread.</item>
+        <item>Праверце надвор\'е на ўсялякі выпадак</item>
+        <item>Feeling a bit sleepy yet?</item>
+        <item>Have you looked outside yet?</item>
+        <item>Let\'s get this done.</item>
+        <item>Morning! Don\'t forget some exercise.</item>
+    </string-array>
+    <string-array name="quickspace_psa_evening">
+        <item>Try to avoid overnight charging.</item>
+        <item>Убачымся заўтра!</item>
+        <item>Don\'t stay up too long!</item>
+        <item>Watch the sunset...</item>
+        <item>Час расслабіцца.</item>
+        <item>Enjoy the night!</item>
+        <item>Time to do something fun and relaxing.</item>
+        <item>Tomorrow might be a great day!</item>
+        <item>Remember to eat dinner.</item>
+        <item>8 hours of sleep is a must.</item>
+        <item>Maybe a glass of water before bed?</item>
+        <item>Enjoy the night.</item>
+    </string-array>
+    <string name="quick_event_weather_clouds">Хмарна</string>
+    <string name="quick_event_weather_rain">Дождж</string>
+    <string name="quick_event_weather_clear">Ясна</string>
+    <string name="quick_event_weather_snow">Снег</string>
+    <string name="quick_event_weather_wind">Ветрана</string>
+    <string name="quick_event_weather_mist">Туман</string>
+    <string name="quick_event_weather_city_title">Бягучы месцазнаходжанне</string>
+    <string name="quick_event_weather_city_summary">Адлюстраванне бягучага месцазнаходжання</string>
+</resources>

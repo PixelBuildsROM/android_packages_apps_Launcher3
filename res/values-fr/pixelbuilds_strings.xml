@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2022 Paranoid Android
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<resources>
+    <string name="pause">Mettre en pause</string>
+    <string name="pause_apps_dialog_title">Suspendre %1$s?</string>
+    <string name="pause_apps_dialog_message">Les notifications pour %1$s seront suspendues</string>
+    <string name="paused_apps_dialog_title">Application en pause</string>
+    <string name="paused_apps_dialog_message">%1$s a été mis en pause directement depuis le lanceur</string>
+    <string name="paused_apps_drop_target_label">Mettre en pause l\'application</string>
+    <string name="label_search">Chercher</string>
+    <string name="label_lens">Lentilles Google</string>
+    <string name="label_voice_search">Recherche vocale</string>
+    <string name="dock_search_title">Barre de recherche Google</string>
+    <string name="dock_search_summary">Barre de recherche dans le dock inférieur</string>
+    <string name="title_show_google_feed">Glisser pour accéder au flux Google</string>
+    <string name="msg_minus_one_on_left">À partir de l\'écran d\'accueil, glissez vers la gauche pour ouvrir le flux Google</string>
+    <string name="msg_minus_one_on_right">À partir de l\'écran d\'accueil, glisser vers la droite pour ouvrir le flux Google</string>
+    <string name="category_icon">Icônes</string>
+    <string name="category_misc">Divers</string>
+    <string name="action_lens">Objectif</string>
+    <string name="show_quickspace_title">En un coup d\'œil</string>
+    <string name="show_quickspace_summary">Afficher en haut de votre écran d\'accueil</string>
+    <string name="quick_event_rom_intro_welcome">Bienvenue dans PixelBuilds!</string>
+    <string name="quick_event_rom_intro_welcome_ext">Bienvenue dans PixelBuilds!</string>
+    <string-array name="welcome_message_variants">
+        <item>L\'infini vous attend !</item>
+        <item>Votre appareil est à votre service !</item>
+        <item>Dites-nous bonjour sur Telegram</item>
+        <item>Appuyez ici pour annuler</item>
+    </string-array>
+    <string name="quickspace_grt_morning">Bonjour.</string>
+    <string name="quickspace_grt_evening">Bonsoir.</string>
+    <string name="quickspace_grt_afternoon">Bon après-midi.</string>
+    <string name="quickspace_grt_night">Bonne nuit.</string>
+    <string name="quickspace_grt_general">Bonjour à tous.</string>
+    <string name="quickspace_ext_one">Aujourd\'hui est</string>
+    <string name="quickspace_ext_two">C\'est</string>
+    <string name="qe_now_playing_unknown_artist">Artiste inconnu</string>
+    <string name="qe_now_playing_ext_one">En cours de lecture</string>
+    <string name="qe_now_playing_by">Par</string>
+    <string name="quickspace_alternate_style_title">Style étendu</string>
+    <string name="quickspace_alternate_style_summary">Basculer vers le style étendu</string>
+    <string name="quickspace_psa_title">Messages aléatoires</string>
+    <string name="quickspace_psa_summary">Rendre votre compagnon plus vivant avec des messages aléatoires</string>
+    <string-array name="quickspace_psa_morning">
+        <item>Bonjour !</item>
+        <item>Bonjour, il est temps de rocher !</item>
+        <item>Good morning, did you get any sleep?</item>
+        <item>What a beautiful day!</item>
+        <item>Have a nice day!</item>
+        <item>That\'s one way to wake up.</item>
+        <item>You should change your alarm sounds.</item>
+        <item>Looks like it\'s a beautiful day, isn\'t it?</item>
+        <item>Let\'s get this bread.</item>
+        <item>Check the weather just in case</item>
+        <item>Feeling a bit sleepy yet?</item>
+        <item>Have you looked outside yet?</item>
+        <item>Let\'s get this done.</item>
+        <item>Morning! Don\'t forget some exercise.</item>
+    </string-array>
+    <string-array name="quickspace_psa_midnight">
+        <item>Um... good night I guess?</item>
+        <item>It\'s a bit late now, get some sleep.</item>
+        <item>You should fix your sleep schedule.</item>
+        <item>Êtes-vous plus productif en ce moment ?</item>
+        <item>La qualité du sommeil est mauvais pour vous !</item>
+        <item>Sérieusement, sortez de votre téléphone et dormez !</item>
+        <item>Il est minuit en ce moment.</item>
+        <item>Vous devez dormir.</item>
+        <item>Profitez de minuit.</item>
+        <item>C\'mon, essayez de dormir.</item>
+        <item>Personne de nuit beaucoup ?</item>
+        <item>Bonjour! Techniquement.</item>
+        <item>Est-ce que vous faites la fête toute la nuit ?</item>
+    </string-array>
+    <string name="quick_event_ambient_weather_title">Condition météo</string>
+    <string name="quick_event_ambient_weather_summary">Afficher les conditions météo actuelles et la température</string>
+    <string name="quick_event_ambient_weather_enabled_info">Nécessite que le service météo soit activé</string>
+    <string name="quick_event_weather_clouds">Nuageux</string>
+    <string name="quick_event_weather_rain">Pluvieux</string>
+    <string name="quick_event_weather_clear">Nettoyer</string>
+    <string name="quick_event_weather_storm">Orageux</string>
+    <string name="quick_event_weather_snow">Neigeux</string>
+    <string name="quick_event_weather_wind">Vente</string>
+    <string name="quick_event_weather_mist">Brume</string>
+    <string name="quick_event_weather_city_title">Emplacement actuel</string>
+    <string name="quick_event_weather_city_summary">Afficher la position actuelle</string>
+    <string name="intent_no_app_clock_found">Impossible de trouver l\'activité du calendrier ou de l\'horloge</string>
+</resources>
