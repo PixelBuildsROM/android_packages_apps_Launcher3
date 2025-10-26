@@ -35,9 +35,12 @@ import com.android.launcher3.notification.NotificationListener;
 import com.android.launcher3.util.PackageUserKey;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class QuickspaceController implements NotificationListener.NotificationsChangedListener, OmniJawsClient.OmniJawsObserver {
 
@@ -115,21 +118,25 @@ public class QuickspaceController implements NotificationListener.NotificationsC
         boolean shouldShowCity = Utilities.QuickSpaceShowCity(mContext);
         if (mWeatherInfo != null) {
             String formattedCondition = mWeatherInfo.condition;
-            if (formattedCondition.toLowerCase().contains("clouds")) {
-               formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_clouds);
-            } else if (formattedCondition.toLowerCase().contains("rain")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_rain);
-            } else if (formattedCondition.toLowerCase().contains("clear")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_clear);
-            } else if (formattedCondition.toLowerCase().contains("storm")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_storm);
-            } else if (formattedCondition.toLowerCase().contains("snow")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_snow);
-            } else if (formattedCondition.toLowerCase().contains("wind")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_wind);
-            } else if (formattedCondition.toLowerCase().contains("mist")) {
-              formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_mist);
+
+            Map<List<String>, Integer> conditionMap = new LinkedHashMap<>();
+            conditionMap.put(Arrays.asList("cloud", "overcast"), R.string.quick_event_weather_clouds);
+            conditionMap.put(Arrays.asList("rain", "shower", "drizzle"), R.string.quick_event_weather_rain);
+            conditionMap.put(Arrays.asList("clear", "sunny"), R.string.quick_event_weather_clear);
+            conditionMap.put(Arrays.asList("storm", "thunder"), R.string.quick_event_weather_storm);
+            conditionMap.put(Arrays.asList("snow", "sleet"), R.string.quick_event_weather_snow);
+            conditionMap.put(Arrays.asList("wind", "breeze"), R.string.quick_event_weather_wind);
+            conditionMap.put(Arrays.asList("mist", "fog", "haze"), R.string.quick_event_weather_mist);
+
+            for (Map.Entry<List<String>, Integer> entry : conditionMap.entrySet()) {
+                for (String keyword : entry.getKey()) {
+                    if (formattedCondition.toLowerCase().contains(keyword)) {
+                        formattedCondition = mContext.getString(entry.getValue());
+                        break;
+                    }
+                }
             }
+            
             String weatherTemp = (shouldShowCity ? mWeatherInfo.city : "") + " " + mWeatherInfo.temp + mWeatherInfo.tempUnits  + " · "  + formattedCondition;
             return weatherTemp;
         }
