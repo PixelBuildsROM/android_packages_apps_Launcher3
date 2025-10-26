@@ -115,8 +115,8 @@ public class QuickspaceController implements NotificationListener.NotificationsC
         boolean shouldShowCity = Utilities.QuickSpaceShowCity(mContext);
         if (mWeatherInfo != null) {
             String formattedCondition = mWeatherInfo.condition;
-            if (formattedCondition.toLowerCase().contains("clouds")) {
-               formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_clouds);
+            if (formattedCondition.toLowerCase().contains("cloud")) {
+                formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_clouds);
             } else if (formattedCondition.toLowerCase().contains("rain")) {
               formattedCondition = mContext.getResources().getString(R.string.quick_event_weather_rain);
             } else if (formattedCondition.toLowerCase().contains("clear")) {
