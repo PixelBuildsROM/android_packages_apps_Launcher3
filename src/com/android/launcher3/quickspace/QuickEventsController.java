@@ -132,7 +132,7 @@ public class QuickEventsController {
         mPSAStr = mContext.getResources().getStringArray(R.array.welcome_message_variants);
         mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
         mGreetings = mContext.getResources().getString(R.string.quickspace_grt_general);
-        mClockExt = mContext.getResources().getString(R.string.quickspace_ext_two);
+        mClockExt = "";
 
         mEventTitleSubAction = new OnClickListener() {
             @Override
