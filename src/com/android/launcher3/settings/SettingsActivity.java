@@ -250,9 +250,9 @@ public class SettingsActivity extends FragmentActivity
                 }
             }
 
-            mWeatherClient = new OmniJawsClient(getContext());
+            mWeatherClient = OmniJawsClient.get();
             mWeatherPref = screen.findPreference(Utilities.KEY_SHOW_QUICKSPACE_WEATHER);
-            if (!mWeatherClient.isOmniJawsEnabled()) {
+            if (!mWeatherClient.isOmniJawsEnabled(getContext())) {
                 mWeatherPref.setEnabled(false);
                 mWeatherPref.setSummary(R.string.quick_event_ambient_weather_enabled_info);
             }

@@ -15,6 +15,9 @@
  */
 package com.android.launcher3.quickspace;
 
+import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
+import static com.android.launcher3.util.Executors.UI_HELPER_EXECUTOR;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
@@ -47,10 +50,11 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     public final ArrayList<OnDataListener> mListeners = new ArrayList();
     private static final String SETTING_WEATHER_LOCKSCREEN_UNIT = "weather_lockscreen_unit";
     private static final boolean DEBUG = false;
-    private static final String TAG = "Launcher3:QuickspaceController";
+    private static final String TAG = QuickspaceController.class.getSimpleName();
 
     private final Context mContext;
-    private final Handler mHandler;
+    private final Handler mMainHandler;
+    private final Handler mBgHandler;
     private QuickEventsController mEventsController;
     private OmniJawsClient mWeatherClient;
     private OmniJawsClient.WeatherInfo mWeatherInfo;
@@ -63,7 +67,32 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     private RemoteController mRemoteController;
     private boolean mClientLost = true;
     private boolean mMediaActive = false;
-    private ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    private final Runnable mOnDataUpdatedRunnable = new Runnable() {
+        @Override
+        public void run() {
+            for (OnDataListener list : new ArrayList<>(mListeners)) {
+                list.onDataUpdated();
+            }
+        }
+    };
+
+    private Runnable mWeatherRunnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (mWeatherClient == null) return;
+                mWeatherClient.queryWeather(mContext);
+                mWeatherInfo = mWeatherClient.getWeatherInfo();
+                if (mWeatherInfo != null) {
+                    mConditionImage = mWeatherClient.getWeatherConditionImage(mContext, mWeatherInfo.conditionCode);
+                }
+                notifyListeners();
+            } catch(Exception e) {
+                // Do nothing
+            }
+        }
+    };
 
     public interface OnDataListener {
         void onDataUpdated();
@@ -71,9 +100,10 @@ public class QuickspaceController implements NotificationListener.NotificationsC
 
     public QuickspaceController(Context context) {
         mContext = context;
-        mHandler = new Handler();
+        mMainHandler = MAIN_EXECUTOR.getHandler();
+        mBgHandler = UI_HELPER_EXECUTOR.getHandler();
         mEventsController = new QuickEventsController(context);
-        mWeatherClient = new OmniJawsClient(context);
+        mWeatherClient = OmniJawsClient.get();
         mRemoteController = new RemoteController(context, mRCClientUpdateListener);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         mAudioManager.registerRemoteController(mRemoteController);
@@ -81,7 +111,7 @@ public class QuickspaceController implements NotificationListener.NotificationsC
 
     private void addWeatherProvider() {
         if (!Utilities.isQuickspaceWeather(mContext)) return;
-        mWeatherClient.addObserver(this);
+        mWeatherClient.addObserver(mContext, this);
         queryAndUpdateWeather();
     }
 
@@ -93,9 +123,11 @@ public class QuickspaceController implements NotificationListener.NotificationsC
 
     public void removeListener(OnDataListener listener) {
         if (mWeatherClient != null) {
-            mWeatherClient.removeObserver(this);
+            mWeatherClient.removeObserver(mContext, this);
         }
         mListeners.remove(listener);
+        mBgHandler.removeCallbacks(mWeatherRunnable);
+        mMainHandler.removeCallbacks(mOnDataUpdatedRunnable);
     }
 
     public boolean isQuickEvent() {
@@ -107,7 +139,7 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     }
 
     public boolean isWeatherAvailable() {
-        return mWeatherClient != null && mWeatherClient.isOmniJawsEnabled();
+        return mWeatherClient != null && mWeatherClient.isOmniJawsEnabled(mContext);
     }
 
     public Drawable getWeatherIcon() {
@@ -183,6 +215,8 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     }
 
     public void onPause() {
+        mBgHandler.removeCallbacks(mWeatherRunnable);
+        mMainHandler.removeCallbacks(mOnDataUpdatedRunnable);
         if (mEventsController != null) mEventsController.onPause();
     }
 
@@ -215,32 +249,13 @@ public class QuickspaceController implements NotificationListener.NotificationsC
     }
 
     private void queryAndUpdateWeather() {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mWeatherClient.queryWeather();
-                    mWeatherInfo = mWeatherClient.getWeatherInfo();
-                    if (mWeatherInfo != null) {
-                        mConditionImage = mWeatherClient.getWeatherConditionImage(mWeatherInfo.conditionCode);
-                    }
-                    notifyListeners();
-                } catch(Exception e) {
-                    // Do nothing
-                }
-            }
-        });
+        mBgHandler.removeCallbacks(mWeatherRunnable);
+        mBgHandler.post(mWeatherRunnable);
     }
 
-    public void notifyListeners() {
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                for (OnDataListener list : mListeners) {
-                    list.onDataUpdated();
-                }
-            }
-        });
+    private void notifyListeners() {
+        mMainHandler.removeCallbacks(mOnDataUpdatedRunnable);
+        mMainHandler.post(mOnDataUpdatedRunnable);
     }
 
    private RemoteController.OnClientUpdateListener mRCClientUpdateListener =
