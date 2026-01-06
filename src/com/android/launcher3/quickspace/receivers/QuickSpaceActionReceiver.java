@@ -39,7 +39,6 @@ public class QuickSpaceActionReceiver {
     private final LauncherApps mLauncherApps;
 
     public OnClickListener mCalendarClickListener;
-    public OnClickListener mWeatherClickListener;
 
     public QuickSpaceActionReceiver(Context context) {
         mContext = context;
@@ -49,13 +48,6 @@ public class QuickSpaceActionReceiver {
             @Override
             public void onClick(View view) {
                 openGoogleCalendar(view);
-            }
-        };
-
-        mWeatherClickListener = new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGoogleWeather(view);
             }
         };
     }
@@ -78,6 +70,7 @@ public class QuickSpaceActionReceiver {
         Intent intent = new Intent("android.intent.action.VIEW");
         intent.setData(Uri.parse("dynact://velour/weather/ProxyActivity"));
         intent.setComponent(new ComponentName("com.google.android.googlequicksearchbox", "com.google.android.apps.gsa.velour.DynamicActivityTrampoline"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         try {
             Launcher.getLauncher(mContext).startActivitySafely(view, intent, null);
         } catch (ActivityNotFoundException ex) {
@@ -86,11 +79,29 @@ public class QuickSpaceActionReceiver {
         }
     }
 
+    private void openOmniWeather(View view) {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName(
+                "org.omnirom.omnijaws",
+                "org.omnirom.omnijaws.WeatherActivity"
+        ));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        try {
+            Launcher.getLauncher(mContext).startActivitySafely(view, intent, null);
+        } catch (ActivityNotFoundException ex) {
+            // Do nothing
+        }
+    }
+
     public OnClickListener getCalendarAction() {
         return mCalendarClickListener;
     }
 
-    public OnClickListener getWeatherAction() {
-        return mWeatherClickListener;
+    public OnClickListener getWeatherAction(boolean hasGoogleApp) {
+        if (hasGoogleApp) {
+            return view -> openGoogleWeather(view);
+        } else {
+            return view -> openOmniWeather(view);
+        }
     }
 }
