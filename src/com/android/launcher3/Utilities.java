@@ -161,6 +161,7 @@ public final class Utilities {
     @IntDef({TRANSLATE_UP, TRANSLATE_DOWN, TRANSLATE_LEFT, TRANSLATE_RIGHT})
     public @interface AdjustmentDirection{}
     public static final String GSA_PACKAGE = "com.google.android.googlequicksearchbox";
+    public static final String CTS_PACKAGE = "com.akslabs.circletosearch";
     public static final String LENS_ACTIVITY = "com.google.android.apps.search.lens.LensExportedActivity";
     public static final String LENS_URI = "google://lens";
     public static final String LENS_SHARE_ACTIVITY = "com.google.android.apps.search.lens.LensShareEntryPointActivity";
@@ -859,6 +860,18 @@ public final class Utilities {
         }
         try {
             return pm.getApplicationInfo(GSA_PACKAGE, 0).enabled;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public static boolean isCTSAvailable(Context context) {
+        PackageManager pm = context.getPackageManager();
+        if (pm == null) {
+            return false;
+        }
+        try {
+            return pm.getApplicationInfo(CTS_PACKAGE, 0).enabled;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
